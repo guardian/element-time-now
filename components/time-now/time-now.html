@@ -1,0 +1,93 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+Element exporting the current time as a Date object.
+
+Optionally, the exported time can be updated automatically based on a
+period set by the `refresh` attribute.
+
+##### Example
+
+    <time-now sink="{{now}}" refresh="2000"></time-now>
+
+@element time-now
+@blurb Element exporting the current time.
+@status alpha
+-->
+<polymer-element name="time-now" attributes="sink refresh">
+
+  <script>
+    Polymer('time-now', {
+      observe: {
+        refresh: 'start'
+      },
+
+      /**
+       * The read-only `sink` attribute exports the current time. It
+       * is initialised when the element is created.
+       * If the `refresh` attribute is used, the value is also updated.
+       *
+       * @attribute sink
+       * @type Date
+       */
+      sink: new Date(),
+
+      /**
+       * If set, the `refresh` attribute sets the interval in
+       * milliseconds for refresh the time exported by this element.
+       *
+       * @attribute refresh
+       * @type Number
+       * @default 0 (off)
+       */
+      refresh: 0,
+
+      /**
+       * The `update` method will update the time exported by this
+       * element to now. Note that you'd usually just rely on the
+       * initial value or auto-updates based on the `refresh` attribute.
+       *
+       * @method update
+       */
+      update: function() {
+        this.sink = new Date();
+      },
+
+
+      /* == Internal methods == */
+
+      start: function() {
+        // Clear current state
+        this.stop();
+
+        var refreshInterval = this.refresh && Number(this.refresh);
+        if (refreshInterval) {
+          this._refreshInterval = setInterval(this.update.bind(this), refreshInterval);
+        }
+      },
+
+      stop: function() {
+        if (this._refreshInterval) {
+          clearInterval(this._refreshInterval);
+          delete this._refreshInterval;
+        }
+      },
+
+
+      /* == Lifecycle == */
+
+      ready: function() {
+        this.start();
+      },
+
+      attached: function() {
+        this.start();
+      },
+
+      detached: function() {
+        this.stop();
+      }
+    });
+  </script>
+
+</polymer-element>

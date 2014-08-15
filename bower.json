@@ -1,0 +1,7 @@
+{
+  "name": "element-time-now#gh-pages",
+  "private": true,
+  "dependencies": {
+    "time-now": "guardian/element-time-now#master"
+  }
+}

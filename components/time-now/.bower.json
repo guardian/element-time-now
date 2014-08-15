@@ -1,0 +1,28 @@
+{
+  "name": "time-now",
+  "authors": [
+    "Sébastien Cevey <seb.cevey@theguardian.com>"
+  ],
+  "description": "Element exporting the current time as a Date object",
+  "keywords": "time, date, polymer, web-components",
+  "main": "time-now.html",
+  "license": "Apache-2",
+  "homepage": "https://github.com/guardian/time-now/",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.3.4",
+    "polymer-test-tools": "Polymer/polymer-test-tools#~0.3.3"
+  },
+  "_release": "fa5b3051a2",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "fa5b3051a2109d0fd3914b4568e46a4285c736a6"
+  },
+  "_source": "git://github.com/guardian/element-time-now.git",
+  "_target": "master",
+  "_originalSource": "guardian/element-time-now",
+  "_direct": true
+}

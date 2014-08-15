@@ -1,0 +1,16 @@
+<link rel="import" href="../../polymer-test-tools/tools.html">
+
+<script src="../../polymer-test-tools/mocha-htmltest.js"></script>
+
+<script>
+
+  mocha.setup({ui: 'tdd', slow: 1000, timeout: 5000, htmlbase: ''});
+
+  htmlSuite('time-now', function() {
+    htmlTest('time-now-basic.html');
+    htmlTest('time-now-refresh.html');
+  });
+
+  mocha.run();
+
+</script>

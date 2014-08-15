@@ -3,6 +3,8 @@ time-now
 
 A simple Polymer element exporting the current time as a Date object.
 
+[Documentation](http://guardian.github.io/element-time-now/)
+
 ## Example
 
 ``` html

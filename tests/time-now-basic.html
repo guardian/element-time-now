@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>time-now</title>
+
+  <script src="../../platform/platform.js"></script>
+  <link rel="import" href="../../polymer-test-tools/tools.html">
+  <script src="../../polymer-test-tools/htmltest.js"></script>
+  
+  <!-- Step 1: import the element to test -->
+  <link rel="import" href="../time-now.html">
+
+</head>
+<body>
+
+  <time-now></time-now>
+
+  <script>
+
+    document.addEventListener('polymer-ready', function() {
+      var myEl = document.querySelector('time-now');
+      assert.equal(typeof myEl.sink, 'object');
+      assert(myEl.sink instanceof Date);
+
+      var now = new Date();
+      var oneSecondAgo = new Date();
+      oneSecondAgo.setSeconds(oneSecondAgo.getSeconds() - 1);
+
+      assert(myEl.sink > oneSecondAgo);
+      assert(myEl.sink <= now);
+
+      // Test a method
+      var initialTime = myEl.sink;
+      myEl.update();
+      assert(myEl.sink > initialTime);
+      done();
+    });
+
+  </script>
+
+</body>
+</html>

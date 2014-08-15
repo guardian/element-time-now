@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>time-now</title>
+
+  <script src="../../platform/platform.js"></script>
+  <link rel="import" href="../../polymer-test-tools/tools.html">
+  <script src="../../polymer-test-tools/htmltest.js"></script>
+  
+  <!-- Step 1: import the element to test -->
+  <link rel="import" href="../time-now.html">
+
+</head>
+<body>
+
+  <time-now refresh="200"></time-now>
+
+  <script>
+
+    document.addEventListener('polymer-ready', function() {
+      var myEl = document.querySelector('time-now');
+      var initialTime = myEl.sink;
+
+      var refresh = 200;
+      var impatience = 30; // just a bit of spare wait
+
+      setTimeout(function() {
+        var timeAfterRefresh = myEl.sink;
+        assert(timeAfterRefresh > initialTime);
+
+        setTimeout(function() {
+          var timeAfterSecondRefresh = myEl.sink;
+          assert(timeAfterSecondRefresh > timeAfterRefresh);
+          done();
+        }, refresh + impatience);
+
+      }, refresh + impatience);
+    });
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>time-now Demo</title>
+
+  <script src="../platform/platform.js"></script>
+  <link rel="import" href="time-now.html">
+
+</head>
+<body unresolved>
+
+  <p>An example of using <code>&lt;time-now></code>:</p>
+
+  <template is="auto-binding">
+    <time-now sink="{{staticNow}}"></time-now>
+    <p>Initial time: {{staticNow}}</p>
+
+    <time-now sink="{{liveNow}}" refresh="1000"></time-now>
+    <p>Live time: {{liveNow}}</p>
+  </template>
+
+</body>
+</html>

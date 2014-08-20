@@ -8,7 +8,7 @@
   "keywords": "time, date, polymer, web-components",
   "main": "time-now.html",
   "license": "Apache-2",
-  "homepage": "https://github.com/guardian/time-now/",
+  "homepage": "https://github.com/guardian/element-time-now/",
   "ignore": [
     "**/.*"
   ],
